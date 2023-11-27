@@ -4,6 +4,7 @@ metadata:
     name: kuber-ingress
 spec:
     rules:
+     - host: otus.arch
      - http:
            paths:
             - path: /health
