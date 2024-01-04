@@ -5,7 +5,7 @@ metadata:
     labels:
         app: kuber-dp
 spec:
-    replicas: 3
+    replicas: 1
     selector:
         matchLabels:
             env: dev
@@ -20,3 +20,15 @@ spec:
                 imagePullPolicy: "Always"
                 ports:
                    - containerPort: 8000
+                env:
+                - name: databaseName
+                  valueFrom:
+                    configMapKeyRef:
+                      name: my-mongodb-config
+                      key: databaseName
+                - name: collectionName
+                  valueFrom:
+                    configMapKeyRef:
+                      name: my-mongodb-config
+                      key: collectionName
+                
